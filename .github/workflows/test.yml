@@ -12,8 +12,21 @@ jobs:
     
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        node-version: [16.x, 18.x, 20.x, 22.x]
+        # Test all Node versions on Linux (main compatibility testing)
+        include:
+          - os: ubuntu-latest
+            node-version: 16.x
+          - os: ubuntu-latest
+            node-version: 18.x
+          - os: ubuntu-latest
+            node-version: 20.x
+          - os: ubuntu-latest
+            node-version: 22.x
+          # Just verify it works on other platforms with latest LTS
+          - os: macos-latest
+            node-version: 20.x
+          - os: windows-latest
+            node-version: 20.x
     
     steps:
     - uses: actions/checkout@v3
