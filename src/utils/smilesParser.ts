@@ -322,8 +322,8 @@ function attachAtom(
     if (!isRoot) {
         const src = prevAtom!.index!;
         const dst = atom.index!;
-        // eslint-disable-next-line prefer-const
         let order: number, stereo: string | null;
+        // eslint-disable-next-line prefer-const
         [order, stereo] = smilesToBond(bondChar);
 
         // Handle implicit aromatic bonds
@@ -370,11 +370,11 @@ function makeRingBonds(
         }
     }
 
-    // eslint-disable-next-line prefer-const
     let lorder: number, lstereo: string | null;
-    // eslint-disable-next-line prefer-const
     let rorder: number, rstereo: string | null;
+    // eslint-disable-next-line prefer-const
     [lorder, lstereo] = smilesToBond(lbondChar);
+    // eslint-disable-next-line prefer-const
     [rorder, rstereo] = smilesToBond(rbondChar);
 
     // Handle implicit aromatic ring bonds
