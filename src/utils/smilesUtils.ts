@@ -123,7 +123,7 @@ export function molToSmiles(
 
     for (const rootIdx of mol.getRoots()) {
         const derived: string[] = [];
-        deriveSmilesFromFragment(derived, mol, rootIdx, ringLog, attributionMaps);
+        deriveSmilesFromFragment(derived, mol, rootIdx, ringLog);
         fragments.push(derived.join(''));
     }
 
@@ -139,8 +139,7 @@ function deriveSmilesFromFragment(
     derived: string[],
     mol: MolecularGraph,
     root: number,
-    ringLog: Map<string, number>,
-    _attributionMaps: any[]
+    ringLog: Map<string, number>
 ): void {
     // Stack entries: [currentAtomIdx, bondIndex, totalBonds, needsClosing]
     const stack: Array<[number, number, number, boolean]> = [];
