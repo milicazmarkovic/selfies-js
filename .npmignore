@@ -1,0 +1,44 @@
+# Source files (compiled to dist)
+src/
+tsconfig.json
+
+# Tests
+tests/
+jest.config.js
+
+# Development files
+node_modules/
+*.log
+*.tgz
+test-*.js
+debug-*.js
+check-*.js
+final-test.js
+convert-to-v2.py
+
+# Documentation that shouldn't be in package
+SETUP.md
+PROJECT_STRUCTURE.md
+COMPLETION_SUMMARY.md
+PUBLICATION_READY.md
+PUBLICATION-SUMMARY.md
+PUBLISH.md
+GITHUB_SETUP.md
+CONTRIBUTING.md
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+.github/
+
+# Linting
+.eslintrc.js
+.prettierrc.js
+
+# Build artifacts (reduce package size)
+*.js.map
+*.d.ts.map

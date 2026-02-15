@@ -1,0 +1,24 @@
+node_modules/
+dist/
+dist-examples/
+coverage/
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.tsbuildinfo
+
+# Development/debug scripts (keep locally, don't commit)
+test-*.js
+debug-*.js
+check-*.js
+final-test.js
+
+# Internal development documentation
+COMPLETION_SUMMARY.md
+PUBLICATION_READY.md
+PUBLICATION-SUMMARY.md
+PUBLISH.md
+SETUP.md
+PROJECT_STRUCTURE.md
+GITHUB_SETUP.md
