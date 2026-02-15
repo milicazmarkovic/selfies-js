@@ -155,6 +155,7 @@ function* fragmentToSelfies(
     let bondIntoCurr = bondIntoRoot;
     let curr = root;
 
+    // eslint-disable-next-line no-constant-condition
     while (true) {
         const currAtom = mol.getAtom(curr);
         const token = atomToSelfies(bondIntoCurr, currAtom);

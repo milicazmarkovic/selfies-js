@@ -51,7 +51,7 @@ export function decoder(
 
     for (const fragment of selfies.split('.')) {
         const n = deriveMolFromSymbols(
-            Array.from(tokenizeSelfies(fragment, compatible)).entries(),
+            Array.from(tokenizeSelfies(fragment)).entries(),
             mol,
             selfies,
             Infinity,
@@ -71,7 +71,7 @@ export function decoder(
 /**
  * Tokenize SELFIES string, skipping [nop] symbols
  */
-function* tokenizeSelfies(selfies: string, _compatible: boolean): Generator<string> {
+function* tokenizeSelfies(selfies: string): Generator<string> {
     for (const symbol of splitSelfies(selfies)) {
         if (symbol === '[nop]') {
             continue;
@@ -120,7 +120,6 @@ function deriveMolFromSymbols(
 
             if (state <= 1) {
                 // Skip branch if state is too low
-                state = state;
             } else {
                 const [branchInitState, nextState] = nextBranchState(bondType, state);
                 state = nextState;

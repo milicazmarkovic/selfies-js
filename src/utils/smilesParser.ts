@@ -81,7 +81,7 @@ function* tokenizeSmiles(smiles: string): Generator<SMILESToken> {
         }
 
         let bondIdx: number | null = null;
-        if (SMILES_BOND_ORDERS.hasOwnProperty(smiles[i])) {
+        if (Object.prototype.hasOwnProperty.call(SMILES_BOND_ORDERS, smiles[i])) {
             bondIdx = i;
             i++;
         }
@@ -192,7 +192,7 @@ export function smilesToAtom(atomSymbol: string): Atom | null {
  * Parse a bond character to get order and stereo info
  */
 export function smilesToBond(bondChar: string | null): [number, string | null] {
-    const order = bondChar && SMILES_BOND_ORDERS.hasOwnProperty(bondChar) 
+    const order = bondChar && Object.prototype.hasOwnProperty.call(SMILES_BOND_ORDERS, bondChar)
         ? SMILES_BOND_ORDERS[bondChar] 
         : 1;
     const stereo = bondChar && SMILES_STEREO_BONDS.has(bondChar) ? bondChar : null;
@@ -322,7 +322,9 @@ function attachAtom(
     if (!isRoot) {
         const src = prevAtom!.index!;
         const dst = atom.index!;
-        let [order, stereo] = smilesToBond(bondChar);
+        let order: number;
+        let stereo: string | null;
+        [order, stereo] = smilesToBond(bondChar);
 
         // Handle implicit aromatic bonds
         if (prevAtom!.isAromatic && atom.isAromatic && bondChar === null) {
@@ -368,8 +370,10 @@ function makeRingBonds(
         }
     }
 
-    let [lorder, lstereo] = smilesToBond(lbondChar);
-    let [rorder, rstereo] = smilesToBond(rbondChar);
+    let lorder: number, lstereo: string | null;
+    let rorder: number, rstereo: string | null;
+    [lorder, lstereo] = smilesToBond(lbondChar);
+    [rorder, rstereo] = smilesToBond(rbondChar);
 
     // Handle implicit aromatic ring bonds
     if (latom.isAromatic && ratom.isAromatic && lbondChar === null && rbondChar === null) {
