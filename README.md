@@ -1,6 +1,6 @@
 # selfies-js
 
-[![npm version](https://badge.fury.io/js/selfies-js.svg)](https://www.npmjs.com/package/selfies-js)
+[![npm version](https://badge.fury.io/js/%40milicazmarkovic%2Fselfies-js.svg)](https://www.npmjs.com/package/@milicazmarkovic/selfies-js)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 JavaScript/TypeScript implementation of SELFIES (SELF-referencIng Embedded Strings), a molecular string representation designed for machine learning applications in chemistry.
@@ -9,7 +9,7 @@ JavaScript/TypeScript implementation of SELFIES (SELF-referencIng Embedded Strin
 
 SELFIES is a string-based representation of molecules where every SELFIES string corresponds to a chemically valid molecule. This property makes SELFIES particularly useful for generative models and optimization algorithms in computational chemistry, where traditional representations like SMILES can produce invalid outputs.
 
-This library provides a complete JavaScript/TypeScript implementation compatible with the Python SELFIES library (v2.2.0). It has been validated on 597,707 molecules from 14 datasets with 99.774% structure equivalence.
+This library provides a complete JavaScript/TypeScript implementation compatible with the Python SELFIES library (v2.2.0). It has been validated on 597,707 molecules from 14 datasets with 99.997% structure equivalence.
 
 ## Use Cases
 
@@ -32,13 +32,13 @@ This library provides a complete JavaScript/TypeScript implementation compatible
 ## Installation
 
 ```bash
-npm install selfies-js
+npm install @milicazmarkovic/selfies-js
 ```
 
 or
 
 ```bash
-yarn add selfies-js
+yarn add @milicazmarkovic/selfies-js
 ```
 
 ## Quick Start
