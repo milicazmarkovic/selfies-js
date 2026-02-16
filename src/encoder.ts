@@ -266,9 +266,8 @@ function ringBondsToSelfies(lbond: DirectedBond, rbond: DirectedBond): string {
     } else {
         const lchar = lbond.stereo === null ? '-' : lbond.stereo;
         const rchar = rbond.stereo === null ? '-' : rbond.stereo;
-        // Sort stereo characters to match Python SELFIES order: - < / < \
-        const chars = [lchar, rchar].sort();
-        return chars[0] + chars[1];
+        // Preserve order of stereo characters (don't sort) to match Python
+        return lchar + rchar;
     }
 }
 

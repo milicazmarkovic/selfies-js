@@ -1,6 +1,6 @@
 {
-  "name": "@milicazmarkovic/selfies-js",
-  "version": "2.0.0",
+  "name": "@milicazm/selfies-js",
+  "version": "2.0.1",
   "description": "JavaScript/TypeScript implementation of SELFIES - a molecular string representation for machine learning in chemistry",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

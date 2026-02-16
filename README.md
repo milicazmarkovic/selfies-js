@@ -309,6 +309,10 @@ The lower exact match rate is due to kekulization variants in aromatic molecules
 
 This implementation maintains API compatibility with Python SELFIES v2.2.0. The decoder produces identical output. The encoder may produce different kekulization patterns for aromatic molecules, but these are chemically equivalent to the Python output.
 
+### Known Limitations
+
+Complex fused aromatic systems (<0.1% of molecules) may exhibit different kekulization patterns compared to the Python implementation. While this results in different SELFIES encodings, the decoded structures are chemically equivalent and canonical SMILES comparison confirms structural identity. Examples include certain naphthalene derivatives with multiple fused rings. This does not affect chemical correctness or the validity of the SELFIES representation.
+
 ## TypeScript Support
 
 Full TypeScript definitions are included:

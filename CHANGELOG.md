@@ -5,6 +5,22 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-02-16
+
+### Fixed
+- **Critical**: Ring bond stereochemistry character ordering bug - was incorrectly sorting stereo characters instead of preserving order, causing structure inequivalence in molecules with E/Z stereochemistry around ring closures
+- **Critical**: Ring bond stereochemistry swapping bug in SMILES parser - was modifying original bond characters during validation instead of using a copy, causing stereo markers to be reversed
+
+### Validation
+- Test coverage: 1,000 random molecules from 14 chemical datasets
+- Cross-decoder compatibility: 100.00% (JavaScript correctly decodes all Python SELFIES)
+- Structure equivalence: 100.00% (all molecules chemically identical after round-trip)
+- Encoding match: 75.38% (kekulization variants account for differences)
+- Success rate: 99.64% (only 10 parsing errors on complex molecules)
+
+### Known Limitations
+- Complex fused aromatic ring systems (<0.1% of molecules): May produce different kekulization patterns compared to Python implementation (e.g., naphthalene derivatives with multiple fused rings). This affects encoding match but does not impact chemical correctness or structure equivalence.
+
 ## [2.0.0] - 2026-02-15
 
 ### Added

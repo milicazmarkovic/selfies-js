@@ -354,22 +354,24 @@ function makeRingBonds(
         throw new SMILESParserError(smiles, 'ring bond specified between already-bonded atoms', ltoken.startIdx);
     }
 
-    let lbondChar: string | null = ltoken.extractBondChar(smiles);
-    let rbondChar: string | null = rtoken.extractBondChar(smiles);
+    const lbondChar: string | null = ltoken.extractBondChar(smiles);
+    const rbondChar: string | null = rtoken.extractBondChar(smiles);
 
-    // Swap bonds if needed
-    if (lbondChar === null && rbondChar !== null) {
-        [lbondChar, rbondChar] = [rbondChar, lbondChar];
+    // Swap bonds ONLY for validation (don't modify the original values)
+    let bonds: [string | null, string | null] = [lbondChar, rbondChar];
+    if (bonds[0] === null) {
+        bonds = [bonds[1], bonds[0]];
     }
 
-    // Check that ring bonds match
-    if (lbondChar !== rbondChar) {
-        if (rbondChar !== null && 
-            !(SMILES_STEREO_BONDS.has(lbondChar!) && SMILES_STEREO_BONDS.has(rbondChar))) {
+    // Check that ring bonds match (using the swapped copy for validation)
+    if (bonds[0] !== bonds[1]) {
+        if (bonds[1] !== null && 
+            !(SMILES_STEREO_BONDS.has(bonds[0]!) && SMILES_STEREO_BONDS.has(bonds[1]))) {
             throw new SMILESParserError(smiles, 'mismatched ring bonds', ltoken.startIdx);
         }
     }
 
+    // Use ORIGINAL values (not swapped) for stereo extraction
     let lorder: number, lstereo: string | null;
     let rorder: number, rstereo: string | null;
     // eslint-disable-next-line prefer-const
